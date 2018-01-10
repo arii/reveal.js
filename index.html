@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Ariel Anders</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -22,12 +22,43 @@
 		</script>
 	</head>
 	<body>
-		<div class="reveal">
+	
+    <div class="reveal">
+
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+                <section 
+                            data-markdown="title.md"
+                            data-background="media/lis-logo.png"
+                            data-background-size="10%"
+                            data-background-position="50% 92%"; 
+                            data-charset="iso-8859-15"
+                            class='center' >
+
+                </section>
+
+                <section    data-markdown="presentation.md"  
+                            data-separator="----"  
+                            data-separator-vertical="===="  
+                            data-separator-notes="^Note:"  
+                            data-background="media/lis-logo.png"
+                            data-background-size="10%"
+                            data-background-position="5% 5%"; 
+                            data-charset="iso-8859-15">
+                </section>
+
+                 <section 
+                            data-background="media/lis-logo.png"
+                            data-background-size="15%"
+                            data-background-position="50% 92%"; 
+                            data-charset="iso-8859-15"
+                            class="center">
+                    <h1> Questions?</h1>
+                 </section>
+
 			</div>
-		</div>
+
+
+
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
@@ -37,10 +68,33 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+                
+                width:1920,
+                height:1080,
+                margin: 0.15,
+                center:false,
+				history: true,
+                transition: 'convex',
+                slideNumber:true,
+                defaultTiming:120,
+                incremental:true,
+                revealjs_presentation: {
+                    fig_width: 10,
+                    fig_height: 6,
+                    fig_caption:true
+                },
+                math: {
+                         mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js',
+                         //mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+                        config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+                        },
+				history: true,
+
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/math/math.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
