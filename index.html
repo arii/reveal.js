@@ -26,28 +26,31 @@
     <div class="reveal">
 
 			<div class="slides">
+                <!--
                 <section 
                             data-markdown="title.md"
-                            data-background="media/lis-logo.png"
+                            data-background="logos/lis-logo.png"
                             data-background-size="10%"
                             data-background-position="50% 92%"; 
                             data-charset="iso-8859-15"
                             class='center' >
 
                 </section>
+                -->
 
                 <section    data-markdown="rmp.md"  
                             data-separator="----"  
                             data-separator-vertical="===="  
+                            data-element-attributes=".add\s*?(.+?)$"
                             data-separator-notes="^Note:"  
-                            data-background="media/lis-logo.png"
+                            data-background="logos/lis-logo.png"
                             data-background-size="10%"
-                            data-background-position="5% 5%"; 
+                            data-background-position="03% 97%"; 
                             data-charset="iso-8859-15">
                 </section>
 
                  <section 
-                            data-background="media/lis-logo.png"
+                            data-background="logos/lis-logo.png"
                             data-background-size="15%"
                             data-background-position="50% 92%"; 
                             data-charset="iso-8859-15"
@@ -57,7 +60,18 @@
 
 			</div>
 
-
+		<div id="hidden" style="display:none;">
+            <div id="header">
+                <div id="header-left" class='hf'></div>
+                <div id="header-right" class='hf'></div>
+                <div id="header-center" class='hf'></div>
+            </div>
+            <div id="footer">
+                <div id="footer-left" class='hf'>Ariel Anders</div>
+                <div id="footer-right" class='hf'>Jan 2018</div>
+                <div id="footer-center" class='hf'>Reliable Manipulation Plannning</div>
+            </div>
+        </div>
 
 
 		<script src="lib/js/head.min.js"></script>
@@ -71,8 +85,8 @@
                 
                 width:1920,
                 height:1080,
-                margin: 0.25,
-                center:false,
+                margin: 0.12,
+                center:true,
 				history: true,
                 transition: 'convex',
                 slideNumber:true,
@@ -93,5 +107,20 @@
 				]
 			});
 		</script>
+        <script src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+            var header = $('#header').html();
+            var footer = $('#footer').html();
+            var title = $('.title').html();
+            if ( window.location.search.match( /print-pdf/gi ) ) {
+                $('.slides > section').prepend(header);
+                $('.slides > section').prepend(footer);
+            }
+            else {
+                $('.section').prepend(title);
+                $('.slides').prepend(header);
+                $('.slides').prepend(footer);
+            }
+        </script>
 	</body>
 </html>
