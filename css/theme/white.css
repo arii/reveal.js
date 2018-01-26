@@ -367,3 +367,30 @@ body {
     right:0;
 }
 
+.reveal div.figurewrapper {
+    display:inline;
+    position:relative;
+    float:left;
+    vertical-align:bottom;
+    content:"";
+    display:table;
+    bottom:0;
+}
+.reveal div.column {
+    display:inline;
+    position:relative;
+    float:right;
+    width: 45%;
+    top:0;
+    padding:2.5%;
+    text-align:left;
+}
+.reveal div.columnleft {
+    display:inline;
+    position:relative;
+    float:left;
+    width: 45%;
+    top:0;
+    padding:2.5%;
+    text-align:left;
+}

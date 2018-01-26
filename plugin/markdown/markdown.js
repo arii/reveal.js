@@ -15,7 +15,46 @@
 		root.RevealMarkdown = factory( root.marked );
 		root.RevealMarkdown.initialize();
 	}
+    
 }( this, function( marked ) {
+// Super simple sanitizer
+function simplesanitize(str) {
+    return str.replace(/&<"/g, function (m) {
+        if (m === "&") return "&amp;"
+        if (m === "<") return "&lt;"
+        return "&quot;"
+    })
+}
+
+var renderer = new marked.Renderer();
+/*
+
+
+renderer.image = function (href, title, alt) {
+    var exec = /\s=\s*(\d*)\s*x\s*(\d*)\s*$/.exec(href);
+    console.log("hiskladjfksda");
+    var res = '<img href="' + simplesanitize(href) + '" alt="' + simplesanitize(alt)
+    if (exec && exec[1]) res += '" height="' + exec[1]
+    if (exec && exec[2]) res += '" width="' + exec[2]
+    return res + '">'
+}
+*/
+
+renderer.image = function(href, title, text) {        
+console.log("hi thereimage");
+    if (title) {  
+        var size = title.split('x');              
+        if (size[1]) {               
+            size = 'width=' + size[0] + ' height=' + size[1];        
+        } else {  
+            size = 'width=' + size[0];            
+        }         
+    } else {      
+        size = '';             
+    }             
+    return ('<img src="' + href + '" alt="' + text + '" ' + size + '>');   
+};
+
 
 	var DEFAULT_SLIDE_SEPARATOR = '^\r?\n---\r?\n$',
 		DEFAULT_NOTES_SEPARATOR = 'notes?:',
@@ -380,6 +419,9 @@
 	return {
 
 		initialize: function() {
+
+
+
 			if( typeof marked === 'undefined' ) {
 				throw 'The reveal.js Markdown plugin requires marked to be loaded';
 			}
@@ -397,6 +439,35 @@
 			if ( options ) {
 				marked.setOptions( options );
 			}
+var renderer = new marked.Renderer();
+/*
+
+
+renderer.image = function (href, title, alt) {
+    var exec = /\s=\s*(\d*)\s*x\s*(\d*)\s*$/.exec(href);
+    console.log("hiskladjfksda");
+    var res = '<img href="' + simplesanitize(href) + '" alt="' + simplesanitize(alt)
+    if (exec && exec[1]) res += '" height="' + exec[1]
+    if (exec && exec[2]) res += '" width="' + exec[2]
+    return res + '">'
+}
+*/
+
+renderer.image = function(href, title, text) {        
+    if (title) {  
+        style='style="'+ title + '"';
+    } else {      
+        size = '';  
+    }             
+    var img = '\n\t<img class="plain" src="' + href + '" alt="' + text + '" style="width:100%" >';   
+    var divhead = '<div class="figurewrapper" ' + style + '>';
+    var figcaption='\n\t<figcaption>' + text + '</figcaption>';
+    var divtail="\n</div>";
+    var ret = divhead + img + figcaption + divtail;
+    return ret;
+};
+
+			marked.setOptions({renderer:renderer});
 
 			processSlides();
 			convertSlides();
