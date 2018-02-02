@@ -375,8 +375,9 @@ body {
     content:"";
     display:table;
     bottom:0;
+    text-align:center
 }
-.reveal div.column {
+.reveal div.mycolumn {
     display:inline;
     position:relative;
     float:right;
@@ -385,7 +386,7 @@ body {
     padding:2.5%;
     text-align:left;
 }
-.reveal div.columnleft {
+.reveal div.mycolumnleft {
     display:inline;
     position:relative;
     float:left;
@@ -394,3 +395,4 @@ body {
     padding:2.5%;
     text-align:left;
 }
+
